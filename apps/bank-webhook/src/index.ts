@@ -7,6 +7,7 @@ app.use(express.json())
 app.post("/hdfcWebhook", async (req, res) => {
     //TODO: Add zod validation here?
     //TODO: HDFC bank should ideally send us a secret so we know this is sent by them
+    //TODO: Check if this onRampTransaction is in processing or not.
     const paymentInformation: {
         token: string;
         userId: string;
@@ -16,6 +17,7 @@ app.post("/hdfcWebhook", async (req, res) => {
         userId: req.body.user_identifier,
         amount: req.body.amount
     };
+    
 
     try {
         await db.$transaction([
