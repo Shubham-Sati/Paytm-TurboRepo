@@ -8,7 +8,7 @@ export async function p2pTransfer(to: string, amount: number) {
   const from = session?.user?.id;
   if (!from) {
     return {
-      message: "Error while sending",
+      message: "Error while sending P2p",
     };
   }
   const toUser = await prisma.user.findFirst({
